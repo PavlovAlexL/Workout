@@ -3,5 +3,6 @@
     <fragment
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:name="palex.site.workout.WorkoutDetailFragment"
+        android:id="@+id/detail_frag"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>

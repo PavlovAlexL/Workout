@@ -14,7 +14,7 @@
     />
 
     <TextView
-        android:id="@+id/textDesctiption"
+        android:id="@+id/textDescription"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
      />

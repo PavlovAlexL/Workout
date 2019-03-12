@@ -14,14 +14,28 @@ import android.widget.TextView;
  */
 public class WorkoutDetailFragment extends Fragment {
 
-    private long workoutId;
+    private long workoutId; //Идентификатор комплекса упражнений
 
 
     public WorkoutDetailFragment() {
         // Required empty public constructor
     }
 
+    @Override
+    public void onCreate(Bundle savedInstanceState){    //Восстанавливаем состояние объекта
+        super.onCreate(savedInstanceState);
+        if (savedInstanceState != null) {
+            workoutId = savedInstanceState.getLong("workoutId");
+        }
+    }
 
+    /**
+     * Вызывается тогда, когда системе потребуется макет фрагмента
+     * @param inflater исп. для заполнения макета фрагмента. При заполнения макета представленя в формате XML преобразуются в объекты Java.
+     * @param container Это объект ViewGroup из макета активности, содержащий фрагмент.
+     * @param savedInstanceState Используется для восстановления состояния.
+     * @return Заполняет элемент view макет фрагмента, преобразуя разметку XML в объекты Java.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -39,12 +53,16 @@ public class WorkoutDetailFragment extends Fragment {
             title.setText(workout.getName());
             TextView description = (TextView) view.findViewById(R.id.textDescription);
             description.setText(workout.getDescription());
-
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {        //Сохраняем состояние фрагмента
+        savedInstanceState.putLong("workoutId", workoutId);
+    }
 
-    public void setWorkout(long id) {
+
+    public void setWorkout(long id) {       //Метод для присваивания идентификатора.
         this.workoutId = id;
     }
 
